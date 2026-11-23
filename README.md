@@ -6,12 +6,13 @@ A mobile-first, third-person 3D Christmas adventure built with Next.js, React 19
 
 - Procedural snow-covered North Pole village, cabins, pine forest, aurora and snowfall.
 - Third-person Santa exploration with a touch joystick and drag-to-look camera.
-- Interactive workshop with Teddy bear, toy train and toy car manufacturing.
+- Interactive workshop with Teddy bear, toy train and toy car manufacturing, plus an animated gift conveyor.
 - Reindeer stable, sleigh preparation and gift loading.
 - Eight animated reindeer, a sleigh with visible cargo presents and momentum-based flight.
 - Flight telemetry, altitude controls, crosswinds, wind streaks and a three-minute sunrise countdown.
 - Seven rooftop delivery targets, controlled low-altitude/low-speed gift drops, animated presents and completed-house markers.
 - Return-to-stable approach and mission result with delivery score.
+- Local save data for toy inventory, sleigh cargo and completed delivery progress.
 - Distant winter districts, a lit beacon tower, a giant Christmas tree and frozen route scenery.
 - Mobile-conscious rendering defaults, capped device pixel ratio and reduced shadow-map resolution.
 
