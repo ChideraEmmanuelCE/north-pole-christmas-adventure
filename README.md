@@ -12,7 +12,7 @@ A mobile-first, third-person 3D Christmas adventure built with Next.js, React 19
 - Flight telemetry, altitude controls, crosswinds, wind streaks and a three-minute sunrise countdown.
 - Seven rooftop delivery targets, controlled low-altitude/low-speed gift drops, animated presents and completed-house markers.
 - Return-to-stable approach and mission result with delivery score.
-- Distant winter districts, a lit clock tower, a giant Christmas tree and frozen route scenery.
+- Distant winter districts, a lit beacon tower, a giant Christmas tree and frozen route scenery.
 - Mobile-conscious rendering defaults, capped device pixel ratio and reduced shadow-map resolution.
 
 ## Controls
