@@ -13,7 +13,7 @@ A mobile-first, third-person 3D Christmas adventure built with Next.js, React 19
 - Seven rooftop delivery targets, controlled low-altitude/low-speed gift drops, animated presents and completed-house markers.
 - Return-to-stable approach and mission result with delivery score.
 - Local save data for toy inventory, sleigh cargo and completed delivery progress.
-- Distant winter districts, a lit beacon tower, a giant Christmas tree and frozen route scenery.
+- Distant winter districts, a lit beacon tower, a giant Christmas tree, illuminated village streetlamps and a snow-covered delivery road.
 - Mobile-conscious rendering defaults, capped device pixel ratio and reduced shadow-map resolution.
 
 ## Controls
@@ -72,4 +72,4 @@ The scene is tuned for modern mobile hardware, with iPhone 12 as the primary per
 
 ## Project status
 
-This is an actively developed playable prototype. The core preparation, flight, delivery and return loop is implemented; deployment, real-device QA, audio, persistence and additional mission content remain future release work.
+This is an actively developed playable prototype. The core preparation, flight, delivery and return loop is implemented, with local browser save data. Deployment, real-device QA, audio and additional mission content remain release work.
