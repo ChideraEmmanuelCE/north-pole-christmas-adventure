@@ -42,40 +42,36 @@ function Sleigh({cargo}:{cargo:number}){
 }
 function Reindeer(){
  const deer=useRef<THREE.Group>(null),legs=useRef<(THREE.Group|null)[]>([]);
- const coat=new THREE.MeshStandardMaterial({color:"#805638",roughness:.88});
- const lightCoat=new THREE.MeshStandardMaterial({color:"#bd9369",roughness:.9});
- const leather=new THREE.MeshStandardMaterial({color:"#34251d",roughness:.68});
- const gold=new THREE.MeshStandardMaterial({color:"#d9b66f",metalness:.62,roughness:.3});
  useFrame(({clock},delta)=>{const t=clock.elapsedTime;if(deer.current){deer.current.position.y=THREE.MathUtils.damp(deer.current.position.y,Math.sin(t*8)*.055,7,delta);deer.current.rotation.z=THREE.MathUtils.damp(deer.current.rotation.z,Math.sin(t*4)*.018,5,delta);}legs.current.forEach((leg,index)=>{if(leg)leg.rotation.x=Math.sin(t*10+Math.floor(index/4)*.7+(index%2)*Math.PI)*.28;});});
  return <group ref={deer}>{Array.from({length:8},(_,i)=>{const x=(i%4-1.5)*.66,z=i<4?-4.35:-3.15;const lead=i===0;return <group key={i} position={[x,0,z]}>
-  <mesh position={[0,1.02,0]} scale={[.42,.42,.83]} castShadow><sphereGeometry args={[1,16,12]}/><primitive object={coat} attach="material"/></mesh>
-  <mesh position={[0,1.3,.48]} rotation={[-.42,0,0]} scale={[.28,.47,.3]} castShadow><sphereGeometry args={[1,14,12]}/><primitive object={lightCoat} attach="material"/></mesh>
-  <mesh position={[0,1.73,.67]} rotation={[-.18,0,0]} scale={[.22,.27,.24]} castShadow><sphereGeometry args={[1,14,12]}/><primitive object={coat} attach="material"/></mesh>
-  <mesh position={[0,1.64,.86]} scale={[.15,.12,.2]}><sphereGeometry args={[1,12,10]}/><primitive object={lightCoat} attach="material"/></mesh>
-  <mesh position={[0,1.68,1.015]}><sphereGeometry args={[lead?.075:.055,12,10]}/><meshStandardMaterial color={lead?"#9d2026":"#3b2924"} roughness={.28}/></mesh>
+  <mesh position={[0,1.02,0]} scale={[.42,.42,.83]} castShadow><sphereGeometry args={[1,16,12]}/><meshStandardMaterial color="#805638" roughness={.88}/></mesh>
+  <mesh position={[0,1.3,.48]} rotation={[-.42,0,0]} scale={[.28,.47,.3]} castShadow><sphereGeometry args={[1,14,12]}/><meshStandardMaterial color="#bd9369" roughness={.9}/></mesh>
+  <mesh position={[0,1.73,.67]} rotation={[-.18,0,0]} scale={[.22,.27,.24]} castShadow><sphereGeometry args={[1,14,12]}/><meshStandardMaterial color="#805638" roughness={.88}/></mesh>
+  <mesh position={[0,1.64,.86]} scale={[.15,.12,.2]}><sphereGeometry args={[1,12,10]}/><meshStandardMaterial color="#bd9369" roughness={.9}/></mesh>
+  <mesh position={[0,1.68,1.015]}><sphereGeometry args={[lead ? .075 : .055,12,10]}/><meshStandardMaterial color={lead?"#9d2026":"#3b2924"} roughness={.28}/></mesh>
   {[-.105,.105].map((side,j)=><group key={side}>
    <mesh position={[side,1.79,.83]}><sphereGeometry args={[.033,8,8]}/><meshStandardMaterial color="#151a1b" roughness={.22}/></mesh>
-   <mesh position={[side*1.22,1.83,.57]} rotation={[0,0,side*.7]}><coneGeometry args={[.075,.3,8]}/><primitive object={lightCoat} attach="material"/></mesh>
+   <mesh position={[side*1.22,1.83,.57]} rotation={[0,0,side*.7]}><coneGeometry args={[.075,.3,8]}/><meshStandardMaterial color="#bd9369" roughness={.9}/></mesh>
    <group position={[side*.14,1.94,.65]} rotation={[0,0,side*.16]}>
-    <mesh position={[0,.16,0]}><cylinderGeometry args={[.026,.045,.34,7]}/><primitive object={gold} attach="material"/></mesh>
-    <mesh position={[side*.09,.32,0]} rotation={[0,0,side*.55]}><cylinderGeometry args={[.018,.028,.25,7]}/><primitive object={gold} attach="material"/></mesh>
-    <mesh position={[side*.18,.43,0]} rotation={[0,0,side*.9]}><cylinderGeometry args={[.012,.022,.18,7]}/><primitive object={gold} attach="material"/></mesh>
+    <mesh position={[0,.16,0]}><cylinderGeometry args={[.026,.045,.34,7]}/><meshStandardMaterial color="#d9b66f" metalness={.62} roughness={.3}/></mesh>
+    <mesh position={[side*.09,.32,0]} rotation={[0,0,side*.55]}><cylinderGeometry args={[.018,.028,.25,7]}/><meshStandardMaterial color="#d9b66f" metalness={.62} roughness={.3}/></mesh>
+    <mesh position={[side*.18,.43,0]} rotation={[0,0,side*.9]}><cylinderGeometry args={[.012,.022,.18,7]}/><meshStandardMaterial color="#d9b66f" metalness={.62} roughness={.3}/></mesh>
    </group>
   </group>)}
-  <mesh position={[0,1.28,.22]} rotation={[Math.PI/2,0,0]}><torusGeometry args={[.31,.035,7,18]}/><primitive object={leather} attach="material"/></mesh>
-  <mesh position={[0,1.28,.22]}><sphereGeometry args={[.075,10,8]}/><primitive object={gold} attach="material"/></mesh>
-  <mesh position={[0,.83,-.79]} rotation={[.3,0,0]}><coneGeometry args={[.07,.4,7]}/><primitive object={coat} attach="material"/></mesh>
+  <mesh position={[0,1.28,.22]} rotation={[Math.PI/2,0,0]}><torusGeometry args={[.31,.035,7,18]}/><meshStandardMaterial color="#34251d" roughness={.68}/></mesh>
+  <mesh position={[0,1.28,.22]}><sphereGeometry args={[.075,10,8]}/><meshStandardMaterial color="#d9b66f" metalness={.62} roughness={.3}/></mesh>
+  <mesh position={[0,.83,-.79]} rotation={[.3,0,0]}><coneGeometry args={[.07,.4,7]}/><meshStandardMaterial color="#805638" roughness={.88}/></mesh>
   {[-.24,.24].map((side,j)=><group key={side} ref={node=>{legs.current[i*4+j]=node;}} position={[side,.76,.42]}>
-   <mesh position={[0,-.31,0]}><capsuleGeometry args={[.075,.48,4,7]}/><primitive object={coat} attach="material"/></mesh>
-   <mesh position={[0,-.57,.045]}><boxGeometry args={[.15,.12,.2]}/><primitive object={leather} attach="material"/></mesh>
+   <mesh position={[0,-.31,0]}><capsuleGeometry args={[.075,.48,4,7]}/><meshStandardMaterial color="#805638" roughness={.88}/></mesh>
+   <mesh position={[0,-.57,.045]}><boxGeometry args={[.15,.12,.2]}/><meshStandardMaterial color="#34251d" roughness={.68}/></mesh>
   </group>)}
   {[-.24,.24].map((side,j)=><group key={"rear"+side} ref={node=>{legs.current[i*4+j+2]=node;}} position={[side,.76,-.55]}>
-   <mesh position={[0,-.31,0]}><capsuleGeometry args={[.075,.48,4,7]}/><primitive object={coat} attach="material"/></mesh>
-   <mesh position={[0,-.57,.045]}><boxGeometry args={[.15,.12,.2]}/><primitive object={leather} attach="material"/></mesh>
+   <mesh position={[0,-.31,0]}><capsuleGeometry args={[.075,.48,4,7]}/><meshStandardMaterial color="#805638" roughness={.88}/></mesh>
+   <mesh position={[0,-.57,.045]}><boxGeometry args={[.15,.12,.2]}/><meshStandardMaterial color="#34251d" roughness={.68}/></mesh>
   </group>)}
-  <mesh position={[0,1.28,-.16]} rotation={[Math.PI/2,0,0]}><torusGeometry args={[.39,.025,6,20]}/><primitive object={gold} attach="material"/></mesh>
+  <mesh position={[0,1.28,-.16]} rotation={[Math.PI/2,0,0]}><torusGeometry args={[.39,.025,6,20]}/><meshStandardMaterial color="#d9b66f" metalness={.62} roughness={.3}/></mesh>
  </group>;})}
- {Array.from({length:7},(_,i)=><mesh key={"rein"+i} position={[(i-3)*.65,1.45,-5.25]} rotation={[Math.PI/2,0,0]}><cylinderGeometry args={[.018,.018,1.35,6]}/><primitive object={leather} attach="material"/></mesh>)}
+ {Array.from({length:7},(_,i)=><mesh key={"rein"+i} position={[(i-3)*.65,1.45,-5.25]} rotation={[Math.PI/2,0,0]}><cylinderGeometry args={[.018,.018,1.35,6]}/><meshStandardMaterial color="#34251d" roughness={.68}/></mesh>)}
  </group>;
 }
 function Aurora(){const ribbons=useMemo(()=>[0,1,2].map((band)=>{const points=Array.from({length:24},(_,i)=>{const x=-48+i*4.2;const y=19+band*1.35+Math.sin(i*.42+band*.8)*2.1;const z=-38-band*3+Math.cos(i*.31+band)*2.5;return new THREE.Vector3(x,y,z);});return new THREE.CatmullRomCurve3(points);}),[]);const group=useRef<THREE.Group>(null);useFrame(({clock},delta)=>{if(group.current){group.current.rotation.y=THREE.MathUtils.damp(group.current.rotation.y,Math.sin(clock.elapsedTime*.12)*.12,1.2,delta);group.current.position.y=Math.sin(clock.elapsedTime*.32)*.45;}});return <group ref={group}>{ribbons.map((curve,i)=><mesh key={i}><tubeGeometry args={[curve,72,.22-i*.035,7,false]}/><meshBasicMaterial color={["#36e6b4","#56a8ff","#a88cff"][i]} transparent opacity={.34-i*.055} depthWrite={false} blending={THREE.AdditiveBlending}/></mesh>)}</group>;}
